@@ -1,5 +1,7 @@
 package ca.app.wsController;
 
+import ca.app.service.SubscribeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,9 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/subscriptions")
 public class SubscriptionsController {
     
+    @Autowired
+    SubscribeService subscribeService;
+    
     @RequestMapping("/create")
     public void create(@RequestParam(value="url") String eventUrl) {
         System.out.println("create eventUrl: " + eventUrl);
+        subscribeService.create(eventUrl);
         //return new Greeting(counter.incrementAndGet(),String.format(template, name));
     }
 
