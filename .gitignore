@@ -1,0 +1,29 @@
+/.project
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Intellij
+.idea/
+.idea
+*.iml
+*.iws
+atlassian-ide-plugin.xml
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
+/idea_SourceCode
+
+#SVN
+.svn
+bin
+obj
+
+#linux
+.swp
