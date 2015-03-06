@@ -6,8 +6,11 @@ import ca.app.user.service.ISVService;
 import ca.app.user.vo.AccountBean;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public class SubscriptionChangeEvent extends Event {
+@Service
+
+public class SubscriptionChangeEvent extends AbstractEvent {
 
     @Autowired
     private ISVService isvService;

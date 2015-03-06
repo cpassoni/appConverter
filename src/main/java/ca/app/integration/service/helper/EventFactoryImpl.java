@@ -17,6 +17,15 @@ public class EventFactoryImpl implements EventFactory{
     @Autowired
     private AppDirectIntegrationAPI api;
 
+    @Autowired private SubscriptionOrderEvent subscriptionOrderEvent;
+    @Autowired private SubscriptionChangeEvent subscriptionChangeEvent;
+    @Autowired private SubscriptionCancelEvent subscriptionCancelEvent;
+    @Autowired private UserAssignmentEvent userAssignmentEvent;
+    @Autowired private UserUnassignmentEvent userUnassignmentEvent;
+    @Autowired private AddonOrderEvent addonOrderEvent;
+    @Autowired private AddonChangeEvent addonChangeEvent;
+    @Autowired private AddonCancelEvent addonCancelEvent;
+
     public Event getSubscribeEvent(String eventUrl, String token){
         String basePath = serverConfiguration.getAppDirectBaseUrl();
 
@@ -31,42 +40,42 @@ public class EventFactoryImpl implements EventFactory{
         Event ret = null;
         switch(eventInfo.getType()) {
             case SUBSCRIPTION_ORDER:
-                ret = new SubscriptionOrderEvent();
+                ret = subscriptionOrderEvent;
                 break;
             case SUBSCRIPTION_CHANGE:
-                ret = new SubscriptionChangeEvent();
+                ret = subscriptionChangeEvent;
 //                processSubscriptionChangeEvent(basePath, eventInfo, result);
                 break;
             case SUBSCRIPTION_CANCEL:
-                ret = new SubscriptionCancelEvent();
+                ret = subscriptionCancelEvent;
                 //processSubscriptionCancelEvent(eventInfo, result);
                 break;
             case USER_ASSIGNMENT:
-                ret = new UserAssignmentEvent();
+                ret = userAssignmentEvent;
                 //processUserAssignmentEvent(eventInfo, result);
                 break;
             case USER_UNASSIGNMENT:
-                ret = new UserUnassignmentEvent();
+                ret = userUnassignmentEvent;
                 //processUserUnassignmentEvent(eventInfo, result);
                 break;
             case SUBSCRIPTION_NOTICE:
                 break;
             case ADDON_ORDER:
-                ret = new AddonOrderEvent();
+                ret = addonOrderEvent;
                // processAddonOrderEvent(eventInfo, result);
                 break;
             case ADDON_CHANGE:
-                ret = new AddonChangeEvent();
+                ret = addonChangeEvent;
                // processAddonChangeEvent(eventInfo, result);
                 break;
             case ADDON_CANCEL:
-                ret = new AddonCancelEvent();
+                ret = addonCancelEvent;
                 // processAddonCancelEvent(eventInfo, result);
                 break;
             default:
                 return null;
         }
-        ret.setEventInfo(eventInfo);
+        ((AbstractEvent)ret).setEventInfo(eventInfo);
         return ret;
     }
 

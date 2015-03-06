@@ -13,10 +13,12 @@ import org.hibernate.ObjectNotFoundException;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public class UserAssignmentEvent extends Event {
+@Service
+public class UserAssignmentEvent extends AbstractEvent {
 
 
     @Autowired

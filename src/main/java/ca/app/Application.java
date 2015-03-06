@@ -2,15 +2,19 @@ package ca.app;
 
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.Arrays;
 
 @SpringBootApplication
-@ComponentScan("ca.app")
-public class Application {
+@ComponentScan({"ca.app", "ca.app.integration.service.helper.*"})
+@EnableAutoConfiguration
+@Configuration
+public class Application  {
 
 
     public static void main(String[] args) {
@@ -23,4 +27,10 @@ public class Application {
             System.out.println(beanName);
         }
     }
+
+
+//    @Bean
+//    public SessionFactory sessionFactory(HibernateEntityManagerFactory hemf) {
+//        return hemf.getSessionFactory();
+//    }
 }

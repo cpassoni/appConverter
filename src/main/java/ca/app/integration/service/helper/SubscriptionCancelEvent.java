@@ -7,8 +7,11 @@ import ca.app.user.service.ISVService;
 import ca.app.user.vo.AddonBean;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public class SubscriptionCancelEvent extends Event {
+@Service
+
+public class SubscriptionCancelEvent extends AbstractEvent {
     @Autowired
     private ISVService isvService;
 

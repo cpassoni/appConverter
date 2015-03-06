@@ -1,8 +1,10 @@
 package ca.app.integration.service.helper;
 
 import ca.app.integration.vo.APIResult;
+import org.springframework.stereotype.Service;
 
-public class AddonCancelEvent extends Event {
+@Service
+public class AddonCancelEvent extends AbstractEvent {
     public APIResult process(){
         APIResult apiResult = new APIResult();
         apiResult.setSuccess(true);

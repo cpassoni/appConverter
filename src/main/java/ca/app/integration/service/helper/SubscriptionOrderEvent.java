@@ -12,14 +12,17 @@ import ca.app.user.vo.UserBean;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+@Service
+public class SubscriptionOrderEvent extends AbstractEvent {
 
-public class SubscriptionOrderEvent extends Event {
     @Autowired
     private GenericDAO<User, Long> userDao;
     @Autowired
     private ISVService isvService;
+
     @Autowired
     private ServerConfiguration serverConfiguration;
 

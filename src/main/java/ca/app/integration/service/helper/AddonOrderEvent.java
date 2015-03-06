@@ -10,8 +10,10 @@ import ca.app.user.vo.AddonBean;
 import org.apache.tomcat.jni.Time;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public class AddonOrderEvent extends Event {
+@Service
+public class AddonOrderEvent extends AbstractEvent {
 
     @Autowired
     private ISVService isvService;

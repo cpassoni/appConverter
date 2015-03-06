@@ -1,17 +1,18 @@
 package ca.app.config;
 
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
 
-@Component
+@Configuration
 public class ServerConfiguration {
-    //@Value("${appdirect.base.url}")
+    @Value("${appdirect.base.url}")
     private String appDirectBaseUrl = "https://www.appdirect.com";
 
-//    @Value("${oauth.consumer.key}")
-    private String oAuthConsumerKey = "asdf";
+    @Value("${oauth.consumer.key}")
+    private String oAuthConsumerKey ;
 
-//    @Value("${oauth.consumer.secret}")
-    private String oAuthConsumerSecret = "asdf";
+    @Value("${oauth.consumer.secret}")
+    private String oAuthConsumerSecret;
 
     public String getAppDirectBaseUrl() {
         return appDirectBaseUrl;
