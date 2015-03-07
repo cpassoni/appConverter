@@ -4,7 +4,7 @@ import ca.app.integration.type.ErrorCode;
 import ca.app.integration.type.EventType;
 import ca.app.integration.vo.APIResult;
 import ca.app.user.service.ISVService;
-import ca.app.user.vo.AddonBean;
+import ca.app.user.vo.AccountBean;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,21 +16,24 @@ public class SubscriptionCancelEvent extends AbstractEvent {
     private ISVService isvService;
 
     public APIResult process(){
-        if (eventInfo.getType() != EventType.ADDON_CANCEL) {
+        if (eventInfo.getType() != EventType.SUBSCRIPTION_CANCEL) {
             throw new RuntimeException("eventInfo not of the right type.");
         }
         APIResult result = new APIResult();
         try {
-            AddonBean addonBean = new AddonBean();
-            addonBean.setAddonIdentifier(eventInfo.getPayload().getAddonInstance().getId());
-            isvService.deleteAddon(addonBean);
+            AccountBean accountBean = new AccountBean();
+            String uuid = "dummy-account".equals(eventInfo.getPayload().getAccount().getAccountIdentifier()) ? eventInfo.getCreator().getUuid() : eventInfo.getPayload().getAccount().getAccountIdentifier() ;
+            //accountBean.setUuid(eventInfo.getPayload().getAccount().getAccountIdentifier());
+            accountBean.setUuid(uuid);
+            isvService.delete(accountBean);
             result.setSuccess(true);
-            result.setMessage(String.format("Successfully cancel addon: %s", eventInfo.getPayload().getAddonInstance().getId()));
-        } catch (ObjectNotFoundException onfe) {
+            result.setMessage(String.format("Successfully deleted account with identifier %s", eventInfo.getPayload().getAccount().getAccountIdentifier()));
+        } catch (ObjectNotFoundException e) {
             result.setSuccess(false);
             result.setErrorCode(ErrorCode.ACCOUNT_NOT_FOUND);
-            result.setMessage(onfe.getMessage());
+            result.setMessage(String.format("Could not find account with identifier %s", eventInfo.getPayload().getAccount().getAccountIdentifier()));
         }
+        
         return result;
     }
 }
