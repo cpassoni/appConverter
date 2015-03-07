@@ -1,4 +1,4 @@
-package ca.app.integration.service.helper;
+package ca.app.integration.service.event;
 
 public interface EventFactory {
     public Event getSubscribeEvent(String eventUrl, String token);

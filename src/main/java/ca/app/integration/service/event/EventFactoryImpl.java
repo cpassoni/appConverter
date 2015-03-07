@@ -1,4 +1,4 @@
-package ca.app.integration.service.helper;
+package ca.app.integration.service.event;
 
 import ca.app.config.ServerConfiguration;
 import ca.app.integration.service.AppDirectIntegrationAPI;
@@ -33,8 +33,6 @@ public class EventFactoryImpl implements EventFactory{
             basePath = extractBasePath(eventUrl);
             token = extractToken(eventUrl).get();
         }
-//        AppDirectIntegrationAPI api = JAXRSClientFactory.create(basePath, AppDirectIntegrationAPI.class);
-//        appDirectIntegrationAPI
 
         final EventInfo eventInfo = api.readEvent(token);
         Event ret = null;
@@ -44,38 +42,33 @@ public class EventFactoryImpl implements EventFactory{
                 break;
             case SUBSCRIPTION_CHANGE:
                 ret = subscriptionChangeEvent;
-//                processSubscriptionChangeEvent(basePath, eventInfo, result);
                 break;
             case SUBSCRIPTION_CANCEL:
                 ret = subscriptionCancelEvent;
-                //processSubscriptionCancelEvent(eventInfo, result);
                 break;
             case USER_ASSIGNMENT:
                 ret = userAssignmentEvent;
-                //processUserAssignmentEvent(eventInfo, result);
                 break;
             case USER_UNASSIGNMENT:
                 ret = userUnassignmentEvent;
-                //processUserUnassignmentEvent(eventInfo, result);
                 break;
             case SUBSCRIPTION_NOTICE:
                 break;
             case ADDON_ORDER:
                 ret = addonOrderEvent;
-               // processAddonOrderEvent(eventInfo, result);
                 break;
             case ADDON_CHANGE:
                 ret = addonChangeEvent;
-               // processAddonChangeEvent(eventInfo, result);
                 break;
             case ADDON_CANCEL:
                 ret = addonCancelEvent;
-                // processAddonCancelEvent(eventInfo, result);
                 break;
             default:
                 return null;
         }
-        ((AbstractEvent)ret).setEventInfo(eventInfo);
+        if (ret != null){
+            ((AbstractEvent)ret).setEventInfo(eventInfo);
+        }
         return ret;
     }
 

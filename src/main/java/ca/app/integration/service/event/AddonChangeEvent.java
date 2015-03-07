@@ -1,4 +1,4 @@
-package ca.app.integration.service.helper;
+package ca.app.integration.service.event;
 
 import ca.app.integration.type.ErrorCode;
 import ca.app.integration.vo.APIResult;
@@ -9,8 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-
-public class SubscriptionChangeEvent extends AbstractEvent {
+public class AddonChangeEvent extends AbstractEvent {
 
     @Autowired
     private ISVService isvService;
@@ -23,7 +22,7 @@ public class SubscriptionChangeEvent extends AbstractEvent {
             accountBean.setEditionCode(eventInfo.getPayload().getOrder().getEditionCode());
             accountBean.setMaxUsers(eventInfo.getPayload().getOrder().getMaxUsers());
             accountBean.setAppDirectManaged(true);
-            accountBean.setAppDirectBaseUrl("appDirectBaseUrl"); //TODO: fix - me
+            accountBean.setAppDirectBaseUrl("appDirectBaseUrl"); //TODO: fixi-me
             isvService.update(accountBean);
             result.setSuccess(true);
             result.setMessage(String.format("Successfully updated account with identifier %s", eventInfo.getPayload().getAccount().getAccountIdentifier()));
@@ -34,5 +33,4 @@ public class SubscriptionChangeEvent extends AbstractEvent {
         }
         return result;
     }
-
 }

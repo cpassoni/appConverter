@@ -1,4 +1,4 @@
-package ca.app.integration.service.helper;
+package ca.app.integration.service.event;
 
 import ca.app.integration.vo.APIResult;
 import ca.app.integration.vo.EventInfo;

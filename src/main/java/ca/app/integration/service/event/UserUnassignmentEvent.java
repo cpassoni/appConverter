@@ -1,4 +1,4 @@
-package ca.app.integration.service.helper;
+package ca.app.integration.service.event;
 
 import ca.app.integration.type.ErrorCode;
 import ca.app.integration.type.EventType;
