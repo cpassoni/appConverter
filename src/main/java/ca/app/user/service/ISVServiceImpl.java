@@ -7,6 +7,7 @@ import ca.app.user.model.User;
 import ca.app.user.vo.AccountBean;
 import ca.app.user.vo.AddonBean;
 import ca.app.user.vo.UserBean;
+import org.hibernate.ObjectNotFoundException;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
@@ -87,14 +88,22 @@ public class ISVServiceImpl implements ISVService {
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
 	public AccountBean readAccountByID(Long accountId) {
-        return new AccountBean(accountDao.findById(accountId));
+        try {
+            return new AccountBean(accountDao.findById(accountId));
+        } catch (ObjectNotFoundException e) {
+            return null;
+        }
     }
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
 	public AccountBean readAccountByUserID(Long userId) {
-        User user = userDao.findById(userId);
-        return new AccountBean(user.getAccount());
+        try {
+            User user = userDao.findById(userId);
+            return new AccountBean(user.getAccount());
+        } catch (ObjectNotFoundException e) {
+            return null;
+        }
     }
 
 	private Account readAccount(AccountBean accountBean) {
@@ -110,8 +119,7 @@ public class ISVServiceImpl implements ISVService {
 			account = accountDao.findUniqueByCriteria(Account.class, criteria);
 		}
 		if (account == null) {
-            return null;
-			//throw new ObjectNotFoundException(accountBean.toString());
+            throw new ObjectNotFoundException(accountBean.toString(), Account.class.toString());
 		}
 		return account;
 	}
@@ -173,8 +181,7 @@ public class ISVServiceImpl implements ISVService {
 				.add(Restrictions.eq("addonIdentifier", addonBean.getAddonIdentifier()));
 		Addon addon = addonDao.findUniqueByCriteria(Addon.class, criteria);
 		if (addon == null) {
-			//throw new ObjectNotFoundException(addonBean.toString());
-            return null;
+            throw new ObjectNotFoundException(addonBean.toString(), Account.class.toString());
 		}
 		return addon;
 	}
