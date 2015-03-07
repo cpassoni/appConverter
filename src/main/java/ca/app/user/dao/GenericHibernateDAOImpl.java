@@ -27,19 +27,19 @@ public class GenericHibernateDAOImpl<T, PK extends Serializable> implements Gene
     }
 
     @Override
-	@Transactional(propagation = Propagation.MANDATORY)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void saveOrUpdate(T entity) {
 		sessionFactory.getCurrentSession().saveOrUpdate(entity);
 	}
 
 	@Override
-	@Transactional(propagation = Propagation.MANDATORY)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void delete(T entity) {
 		sessionFactory.getCurrentSession().delete(entity);
 	}
 
 	@Override
-	@Transactional(propagation = Propagation.MANDATORY)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public T findById(PK id) {
 		@SuppressWarnings("unchecked")
 		T result = (T) sessionFactory.getCurrentSession().load(type, id);
@@ -47,7 +47,7 @@ public class GenericHibernateDAOImpl<T, PK extends Serializable> implements Gene
 	}
 
 	@Override
-	@Transactional(propagation = Propagation.MANDATORY)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public List<T> findAll() {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(type);
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
@@ -57,13 +57,13 @@ public class GenericHibernateDAOImpl<T, PK extends Serializable> implements Gene
 	}
 
 	@Override
-	@Transactional(propagation = Propagation.MANDATORY)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public <E> List<E> findByCriteria(Class<E> type, DetachedCriteria criteria) {
 		return findByCriteria(type, criteria, 0, -1);
 	}
 
 	@Override
-	@Transactional(propagation = Propagation.MANDATORY)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public <E> List<E> findByCriteria(Class<E> type, DetachedCriteria criteria, int firstResult, int maxResults) {
 		Criteria executableCriteria = criteria.getExecutableCriteria(sessionFactory.getCurrentSession());
 		if (firstResult >= 0) {
@@ -78,7 +78,7 @@ public class GenericHibernateDAOImpl<T, PK extends Serializable> implements Gene
 	}
 
 	@Override
-	@Transactional(propagation = Propagation.MANDATORY)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public <E> E findUniqueByCriteria(Class<E> type, DetachedCriteria criteria) {
 		List<E> results = findByCriteria(type, criteria);
 		if (results.size() > 1) {
