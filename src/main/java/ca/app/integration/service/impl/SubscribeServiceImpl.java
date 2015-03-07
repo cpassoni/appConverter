@@ -1,8 +1,8 @@
 package ca.app.integration.service.impl;
 
 import ca.app.integration.service.SubscribeService;
-import ca.app.integration.service.helper.Event;
-import ca.app.integration.service.helper.EventFactory;
+import ca.app.integration.service.event.Event;
+import ca.app.integration.service.event.EventFactory;
 import ca.app.integration.vo.APIResult;
 import ca.app.integration.type.ErrorCode;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class SubscribeServiceImpl implements SubscribeService {
         Event event = eventFactory.getSubscribeEvent(eventUrl, token);
         APIResult apiResult = new APIResult();
         try {
-            System.out.println("event.process();");
+            System.out.println(event.getClass().getSimpleName() + ".process();");
             apiResult = event.process();
         }  catch (RuntimeException e) {
             apiResult.setSuccess(false);
