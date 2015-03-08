@@ -1,4 +1,4 @@
-package ca.app.wsController;
+package ca.app.frontEnd.wsController;
 
 import ca.app.integration.service.SubscribeService;
 import ca.app.integration.vo.APIResult;
@@ -13,8 +13,11 @@ public class SubscriptionsController {
 
     @RequestMapping( value = "/event", method= RequestMethod.GET)
     @ResponseBody
-    public APIResult create(@RequestParam(value="url") String eventUrl) {
+    public APIResult create(@RequestParam(value="url") String eventUrl, @RequestParam(value="token") String token) {
+
         System.out.println("create eventUrl: " + eventUrl);
-        return subscribeService.processEvent(eventUrl, "asdf");
+        System.out.println("create token: " + token);
+        return subscribeService.processEvent(eventUrl, token);
     }
 }
+
