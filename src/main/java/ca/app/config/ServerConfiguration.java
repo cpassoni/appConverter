@@ -6,10 +6,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ServerConfiguration {
     @Value("${appdirect.base.url}")
-    private String appDirectBaseUrl = "https://www.appdirect.com";
+    private String appDirectBaseUrl;
 
     @Value("${oauth.consumer.key}")
-    private String oAuthConsumerKey ;
+    private String oAuthConsumerKey;
 
     @Value("${oauth.consumer.secret}")
     private String oAuthConsumerSecret;

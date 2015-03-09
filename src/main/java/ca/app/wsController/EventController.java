@@ -1,15 +1,15 @@
-package ca.app.frontEnd.wsController;
+package ca.app.wsController;
 
-import ca.app.integration.service.SubscribeService;
+import ca.app.integration.service.EventService;
 import ca.app.integration.vo.APIResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class SubscriptionsController {
+public class EventController {
     
     @Autowired
-    SubscribeService subscribeService;
+    EventService eventService;
 
     @RequestMapping( value = "/event", method= RequestMethod.GET)
     @ResponseBody
@@ -17,7 +17,7 @@ public class SubscriptionsController {
 
         System.out.println("create eventUrl: " + eventUrl);
         System.out.println("create token: " + token);
-        return subscribeService.processEvent(eventUrl, token);
+        return eventService.processEvent(eventUrl, token);
     }
 }
 
