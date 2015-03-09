@@ -1,10 +1,16 @@
 package ca.app.wsController;
 
 import ca.app.user.service.ISVService;
-import com.google.gson.Gson;
+import ca.app.user.vo.AccountBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+
+/**
+ * Controller responsible for provide accounts information
+ */
 @RestController
 public class AccountController {
     
@@ -13,16 +19,14 @@ public class AccountController {
 
     @RequestMapping(value="accounts/{uuid}", method=RequestMethod.GET, produces="application/json")
     @ResponseBody
-    public String getAccount(@RequestParam(value="uuid") String uuid) {
-        Gson g = new Gson();
-        return g.toJson(isvService.readAccountByUUID(uuid));
+    public AccountBean getAccount(@RequestParam(value="uuid") String uuid) {
+        return isvService.readAccountByUUID(uuid);
     }
 
     @RequestMapping(value="accounts", method=RequestMethod.GET, produces="application/json")
     @ResponseBody
-    public String getAllAccount() {
-        Gson g = new Gson();
-        return g.toJson(isvService.readAccounts());
+    public List<AccountBean> getAllAccount() {
+        return isvService.readAccounts();
     }
 
 

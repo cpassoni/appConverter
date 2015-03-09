@@ -5,6 +5,9 @@ import ca.app.integration.vo.APIResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * Events entry point, this controller is responsible to receive all events comes from appDirect
+ */
 @RestController
 public class EventController {
     
