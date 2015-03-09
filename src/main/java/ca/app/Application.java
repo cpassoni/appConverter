@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
 
 import java.util.Arrays;
 
@@ -14,6 +15,9 @@ import java.util.Arrays;
 @ComponentScan("ca.app")
 @EnableAutoConfiguration
 @Configuration
+@ImportResource({
+        "classpath:spring/applicationContext-security.xml"
+})
 public class Application  {
 
 
