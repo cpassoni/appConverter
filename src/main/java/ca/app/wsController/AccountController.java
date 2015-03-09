@@ -1,19 +1,9 @@
 package ca.app.wsController;
 
-import ca.app.integration.service.EventService;
-import ca.app.integration.vo.APIResult;
 import ca.app.user.service.ISVService;
-import ca.app.user.vo.AccountBean;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 
 @RestController
 public class AccountController {

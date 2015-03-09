@@ -4,14 +4,8 @@ import ca.app.user.vo.AccountBean;
 import ca.app.user.vo.AddonBean;
 import ca.app.user.vo.UserBean;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-@Path("service")
 public interface ISVService {
 	public Long createAccount(AccountBean accountBean, UserBean adminBean);
 
@@ -21,7 +15,7 @@ public interface ISVService {
 
 	public List<UserBean> readUsers();
 
-	public AccountBean readAccountByUUID(@PathParam("uuid") String accountUuid);
+	public AccountBean readAccountByUUID(String accountUuid);
 
 	public AccountBean readAccountByID(Long accountId);
 

@@ -5,24 +5,18 @@ import ca.app.integration.service.AppDirectIntegrationAPI;
 import ca.app.integration.vo.BillingAPIResult;
 import ca.app.integration.vo.EventInfo;
 import ca.app.integration.vo.UsageBean;
-import ca.app.security.oauth.OAuthUrlSigner;
 import com.google.gson.Gson;
 import oauth.signpost.OAuthConsumer;
 import oauth.signpost.basic.DefaultOAuthConsumer;
 import oauth.signpost.exception.OAuthCommunicationException;
 import oauth.signpost.exception.OAuthExpectationFailedException;
 import oauth.signpost.exception.OAuthMessageSignerException;
-import oauth.signpost.signature.QueryStringSigningStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.json.GsonJsonParser;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
-import javax.ws.rs.NotAllowedException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 @Service
