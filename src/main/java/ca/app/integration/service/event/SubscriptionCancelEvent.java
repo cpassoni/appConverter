@@ -22,9 +22,7 @@ public class SubscriptionCancelEvent extends AbstractEvent {
         APIResult result = new APIResult();
         try {
             AccountBean accountBean = new AccountBean();
-            String uuid = "dummy-account".equals(eventInfo.getPayload().getAccount().getAccountIdentifier()) ? eventInfo.getCreator().getUuid() : eventInfo.getPayload().getAccount().getAccountIdentifier() ;
-            //accountBean.setUuid(eventInfo.getPayload().getAccount().getAccountIdentifier());
-            accountBean.setUuid(uuid);
+            accountBean.setUuid(eventInfo.getPayload().getAccount().getAccountIdentifier());
             isvService.delete(accountBean);
             result.setSuccess(true);
             result.setMessage(String.format("Successfully deleted account with identifier %s", eventInfo.getPayload().getAccount().getAccountIdentifier()));

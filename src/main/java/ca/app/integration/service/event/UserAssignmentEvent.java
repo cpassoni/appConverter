@@ -58,6 +58,7 @@ public class UserAssignmentEvent extends AbstractEvent {
         }
         userBean.setAdmin(admin);
         // AppDirect is trying to create a new user.
+        System.out.printf("search by %s \n", userBean.getOpenId());
         DetachedCriteria criteria = DetachedCriteria.forClass(User.class).add(Restrictions.eq("openId", userBean.getOpenId()));
         List<User> existingUsers = userDao.findByCriteria(User.class, criteria);
         User existingUser = existingUsers == null || existingUsers.isEmpty() ? null : existingUsers.get(0);
@@ -77,6 +78,7 @@ public class UserAssignmentEvent extends AbstractEvent {
             try {
                 // Create the new user.
                 isvService.createUser(userBean, accountBean);
+                result.setSuccess(true);
                 result.setMessage("Successfully created user: " + userBean.getUsername());
             } catch (ObjectNotFoundException onfe) {
                 // The account could not be found. Fail.

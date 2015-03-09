@@ -39,6 +39,7 @@ public class UserUnassignmentEvent extends AbstractEvent {
             } else {
                 user.getAccount().getUsers().remove(user);
                 user.setAccount(null);
+                result.setSuccess(true);
                 this.userDao.delete(user);
                 result.setMessage("Successfully deleted user: " + eventInfo.getPayload().getUser().getOpenId());
             }
