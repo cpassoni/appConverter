@@ -50,11 +50,6 @@ public class AuthenticationController {
                         HttpServletRequest request, HttpServletResponse httpResp) {
         String requestedUrl = request.getRequestURL().toString();
         String baseUrl = requestedUrl.substring(0, requestedUrl.indexOf("/login"));
-        if (SecurityContextHolder.getContext().getAuthentication().isAuthenticated())
-        {
-            String to =  baseUrl + "converter";
-            return "redirect:" + to;
-        }
 
         String returnUrl = String.format("%s/%s", baseUrl, MOUNT_PATH);
         try {

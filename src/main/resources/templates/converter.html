@@ -2,10 +2,36 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Unit Converter </title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<p th:text="'Hello, ' + ${name} + '!'" />
-
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <ul class="nav navbar-nav">
+            <li><a id="account">Account</a></li>
+            <li><a id="userList">User List</a></li>
+            <li><a id="login">Login</a></li>
+            <li><a id="logout">Logout</a></li>
+            <li>
+                <span id="loginInfo">
+				    <span style="font-weight: bold;">Login Information:</span>
+					<span style="background-color: lightBlue;">
+					<span>User Name:&nbsp;</span>
+					<span id="firstName" th:text="${principal.firstName}"></span>&nbsp;
+                    <span id="lastName" th:text="${principal.lastName}"></span>
+					<span>OpenID:&nbsp;</span>
+					<span id="openId" th:text="${principal.openId}"></span>
+					<a id="moreInfo">More Info</a>
+                    </span>
+                </span>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <footer>
+        <p>Copyright &#169; AppDirect, 2012</p>
+    </footer>
+</div>
 </body>
 </html>

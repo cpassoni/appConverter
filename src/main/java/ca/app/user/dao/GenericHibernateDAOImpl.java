@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.io.Serializable;
 import java.util.List;
 
-@Repository
 public class GenericHibernateDAOImpl<T, PK extends Serializable> implements GenericDAO<T, PK> {
 
     @Autowired
@@ -22,9 +21,6 @@ public class GenericHibernateDAOImpl<T, PK extends Serializable> implements Gene
 	public GenericHibernateDAOImpl(Class<T> type) {
 		this.type = type;
 	}
-
-    public GenericHibernateDAOImpl() {
-    }
 
     @Override
 	@Transactional(propagation = Propagation.REQUIRED)

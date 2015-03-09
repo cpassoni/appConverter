@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	">
+	<bean id="accountDao" class="ca.app.user.dao.GenericHibernateDAOImpl">
+		<constructor-arg>
+			<value>ca.app.user.model.Account</value>
+		</constructor-arg>
+	</bean>
+	<bean id="userDao" class="ca.app.user.dao.GenericHibernateDAOImpl">
+		<constructor-arg>
+			<value>ca.app.user.model.User</value>
+		</constructor-arg>
+	</bean>
+	<bean id="addonDao" class="ca.app.user.dao.GenericHibernateDAOImpl">
+		<constructor-arg>
+			<value>ca.app.user.model.Addon</value>
+		</constructor-arg>
+	</bean>
+</beans>

@@ -16,10 +16,10 @@ import java.util.Arrays;
 @EnableAutoConfiguration
 @Configuration
 @ImportResource({
-        "classpath:spring/applicationContext-security.xml"
+        "classpath:spring/applicationContext-security.xml",
+        "classpath:spring/applicationContext-orm.xml"
 })
 public class Application  {
-
 
     public static void main(String[] args) {
         ApplicationContext ctx = SpringApplication.run(Application.class, args);

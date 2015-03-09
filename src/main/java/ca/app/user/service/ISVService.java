@@ -19,23 +19,14 @@ public interface ISVService {
 
 	public UserBean readUserByOpenID(String openId);
 
-	@GET
-	@Path("users")
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	public List<UserBean> readUsers();
 
-	@GET
-	@Path("accounts/{uuid}")
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	public AccountBean readAccountByUUID(@PathParam("uuid") String accountUuid);
 
 	public AccountBean readAccountByID(Long accountId);
 
 	public AccountBean readAccountByUserID(Long userId);
 
-	@GET
-	@Path("accounts")
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	public List<AccountBean> readAccounts();
 
 	public void update(AccountBean accountBean);

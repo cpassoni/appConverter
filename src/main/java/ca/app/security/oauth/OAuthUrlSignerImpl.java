@@ -24,10 +24,10 @@ public class OAuthUrlSignerImpl implements OAuthUrlSigner {
         System.out.printf("Signing URL: %s.\n", urlString);
 		try {
 			String signedUrl = consumer.sign(urlString);
-            System.out.printf("Signing URL: %s.\n", urlString);
-			return signedUrl;
+            System.out.printf("Signing URL: %s.\n", signedUrl);
+            return signedUrl;
 		} catch (OAuthException e) {
-            System.out.println("error");
+            System.err.println(e);
             return urlString;
 		}
 	}
