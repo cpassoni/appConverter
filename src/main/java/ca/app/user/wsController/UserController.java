@@ -1,4 +1,4 @@
-package ca.app.wsController;
+package ca.app.user.wsController;
 
 import ca.app.user.service.ISVService;
 import ca.app.user.vo.UserBean;

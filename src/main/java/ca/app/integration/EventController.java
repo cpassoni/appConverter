@@ -1,4 +1,4 @@
-package ca.app.wsController;
+package ca.app.integration;
 
 import ca.app.integration.service.EventService;
 import ca.app.integration.vo.APIResult;

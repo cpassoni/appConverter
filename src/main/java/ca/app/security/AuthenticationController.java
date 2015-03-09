@@ -1,4 +1,4 @@
-package ca.app.frontEnd.controller;
+package ca.app.security;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
