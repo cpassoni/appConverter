@@ -108,7 +108,7 @@ public class ISVServiceImpl implements ISVService {
 
 	private Account readAccount(AccountBean accountBean) {
 		Account account = null;
-		if (account == null && accountBean.getId() != null) {
+		if (accountBean.getId() != null) {
 			DetachedCriteria criteria = DetachedCriteria.forClass(Account.class)
 				.add(Restrictions.eq("id", accountBean.getId()));
 			account = accountDao.findUniqueByCriteria(Account.class, criteria);

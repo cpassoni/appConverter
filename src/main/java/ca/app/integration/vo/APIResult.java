@@ -90,4 +90,17 @@ public class APIResult implements Serializable {
 	public boolean isAsynchronous() {
 		return asynchronous;
 	}
+
+    @Override
+    public String toString() {
+        return "APIResult{" +
+                "success=" + success +
+                ", asynchronous=" + asynchronous +
+                ", errorCode=" + errorCode +
+                ", message='" + message + '\'' +
+                ", accountIdentifier='" + accountIdentifier + '\'' +
+                ", userIdentifier='" + userIdentifier + '\'' +
+                ", id='" + id + '\'' +
+                '}';
+    }
 }

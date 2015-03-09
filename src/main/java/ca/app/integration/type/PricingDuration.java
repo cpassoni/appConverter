@@ -8,5 +8,5 @@ public enum PricingDuration {
 	YEARLY,
 	TWO_YEARS,
 	THREE_YEARS,
-	DAILY;
+	DAILY
 }
