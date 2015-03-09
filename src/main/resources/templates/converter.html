@@ -3,6 +3,7 @@
 <head>
     <title>Unit Converter </title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-default" role="navigation">
@@ -26,9 +27,51 @@
                 </span>
             </li>
         </ul>
+
     </div>
 </nav>
 <div class="container">
+    <div id="user_table_id"></div>
+    <br/>
+    <div id="accounts_table_id"></div>
+    <br/>
+    <script >
+        $.getJSON("/users" , function(data) {
+            var tbl_body = '';
+            var odd_even = false;
+            var tbl_thead = '';
+            $.each(data, function() {
+                var tbl_row = '';
+                tbl_thead = '';
+                $.each(this, function(k , v) {
+                    tbl_thead  += '<th>' + k + '</th>';
+                    tbl_row += '<td>'+v+'</td>';
+                });
+                tbl_body += '<tr class="' +( odd_even ? 'odd'  : 'even')+'">'+tbl_row+'</tr>';
+                odd_even = !odd_even;
+            });
+            $("#user_table_id").html('<table> <thead> ' + tbl_thead + '</thead><tbody>' + tbl_body + '</tbody></table>');
+        });
+
+        $.getJSON("/accounts" , function(data) {
+            var tbl_body = '';
+            var odd_even = false;
+            var tbl_thead = '';
+            $.each(data, function() {
+                var tbl_row = '';
+                tbl_thead = '';
+                $.each(this, function(k , v) {
+                    tbl_thead  += '<th>' + k + '</th>';
+                    tbl_row += '<td>'+v+'</td>';
+                });
+                tbl_body += '<tr class="' +( odd_even ? 'odd'  : 'even')+'">'+tbl_row+'</tr>';
+                odd_even = !odd_even;
+            });
+            $("#accounts_table_id").html('<table> <thead> ' + tbl_thead + '</thead><tbody>' + tbl_body + '</tbody></table>');
+        });
+    </script>
+
+
     <footer>
         <p>Copyright &#169; AppDirect, 2012</p>
     </footer>

@@ -65,7 +65,7 @@ public class AuthenticationController {
             String to =  baseUrl + "converter";
             return "redirect:" + to;
         }
-        return "redirect:" + baseUrl + "/loginInfo";
+        return "redirect:" + baseUrl + "/login";
     }
 
     @RequestMapping("/logout")
