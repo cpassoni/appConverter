@@ -9,10 +9,8 @@
 <nav class="navbar navbar-default" role="navigation">
     <div class="container">
         <ul class="nav navbar-nav">
-            <li><a id="account">Account</a></li>
-            <li><a id="userList">User List</a></li>
-            <li><a id="login">Login</a></li>
-            <li><a id="logout">Logout</a></li>
+
+            <li><a href="/logout" id="logout">Logout</a></li>
             <li>
                 <span id="loginInfo">
 				    <span style="font-weight: bold;">Login Information:</span>
@@ -22,7 +20,6 @@
                     <span id="lastName" th:text="${principal.lastName}"></span>
 					<span>OpenID:&nbsp;</span>
 					<span id="openId" th:text="${principal.openId}"></span>
-					<a id="moreInfo">More Info</a>
                     </span>
                 </span>
             </li>
@@ -31,8 +28,10 @@
     </div>
 </nav>
 <div class="container">
+    <h2>Users</h2>
     <div id="user_table_id"></div>
     <br/>
+    <h2>Accounts</h2>
     <div id="accounts_table_id"></div>
     <br/>
     <script >
@@ -73,7 +72,6 @@
 
 
     <footer>
-        <p>Copyright &#169; AppDirect, 2012</p>
     </footer>
 </div>
 </body>
