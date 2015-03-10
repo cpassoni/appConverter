@@ -12,11 +12,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class EventServiceImpl implements EventService {
 
-    private static final String UNKNOWN = "unknown";
-    private static final String X_FORWARDED_FOR = "x-forwarded-for";
-    private static final String HTTP_CLIENT_IP = "HTTP_CLIENT_IP";
-    private static final String HTTP_X_FORWARDED_FOR = "HTTP_X_FORWARDED_FOR";
-
 
     @Autowired
     private EventFactory eventFactory;
@@ -40,22 +35,7 @@ public class EventServiceImpl implements EventService {
             }
             apiResult.setMessage(message.toString());
         }
-//        apiResult.setMessage(String.format("From IP: %s. %s", extractIpAddress(request), result.getMessage()));
         return apiResult;
 
     }
-//
-//    private String extractIpAddress(HttpServletRequest request) {
-//        String ip = request.getHeader(X_FORWARDED_FOR);
-//        if (Strings.isNullOrEmpty(ip) || ip.equalsIgnoreCase(UNKNOWN)) {
-//            ip = request.getHeader(HTTP_CLIENT_IP);
-//        }
-//        if (Strings.isNullOrEmpty(ip) || ip.equalsIgnoreCase(UNKNOWN)) {
-//            ip = request.getHeader(HTTP_X_FORWARDED_FOR);
-//        }
-//        if (Strings.isNullOrEmpty(ip) || ip.equalsIgnoreCase(UNKNOWN)) {
-//            ip = request.getRemoteAddr();
-//        }
-//        return ip;
-//    }
 }
