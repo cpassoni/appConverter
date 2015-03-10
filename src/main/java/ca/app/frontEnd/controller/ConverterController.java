@@ -17,7 +17,7 @@ public class ConverterController {
     private ISVService isvService;
 
 
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasRole('USER')")
     @RequestMapping("/converter")
     public String converter(Model model) {
         model.addAttribute("principal", SecurityContextHolder.getContext().getAuthentication().getPrincipal());

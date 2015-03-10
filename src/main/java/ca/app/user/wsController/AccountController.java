@@ -3,6 +3,7 @@ package ca.app.user.wsController;
 import ca.app.user.service.ISVService;
 import ca.app.user.vo.AccountBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
  * Controller responsible for provide accounts information
  */
 @RestController
+@PreAuthorize("hasRole('USER')")
 public class AccountController {
     
     @Autowired
