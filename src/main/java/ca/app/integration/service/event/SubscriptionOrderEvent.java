@@ -15,6 +15,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+/*
+    Class to handle subscription order
+*/
 @Service
 public class SubscriptionOrderEvent extends AbstractEvent {
 

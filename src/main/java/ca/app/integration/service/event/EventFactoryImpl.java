@@ -8,6 +8,10 @@ import com.google.common.base.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/* 
+Implementation of the factory to provide the right event class
+*/
+
 @Service
 public class EventFactoryImpl implements EventFactory{
 

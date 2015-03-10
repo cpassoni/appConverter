@@ -17,6 +17,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/*
+    Class to handle assignment user
+*/
 @Service
 public class UserAssignmentEvent extends AbstractEvent {
 

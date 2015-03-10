@@ -8,8 +8,10 @@ import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/*
+Class to handle change subscription
+*/
 @Service
-
 public class SubscriptionChangeEvent extends AbstractEvent {
 
     @Autowired

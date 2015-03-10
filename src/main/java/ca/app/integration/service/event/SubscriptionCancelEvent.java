@@ -9,8 +9,11 @@ import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
 
+/*
+Class to handle cancel subscription
+*/
+@Service
 public class SubscriptionCancelEvent extends AbstractEvent {
     @Autowired
     private ISVService isvService;

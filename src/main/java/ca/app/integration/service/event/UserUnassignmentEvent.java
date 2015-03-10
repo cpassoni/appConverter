@@ -15,6 +15,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/*
+    Class to handle unassignment user
+*/
 @Service
 public class UserUnassignmentEvent extends AbstractEvent {
 
